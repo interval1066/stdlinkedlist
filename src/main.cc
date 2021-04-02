@@ -25,7 +25,7 @@ sortasc(Node<T>* head)
 {
 	Node<T>* temphead = head;
 	T tempkey;
-	unsigned counter = temphead->count(head);
+	auto counter = temphead->count(head);
 
 	for(unsigned n = 0; n < counter; n++) {
 		while(temphead->getNext()) {

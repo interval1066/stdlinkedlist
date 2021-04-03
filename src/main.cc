@@ -66,7 +66,7 @@ sortdsc(Node<T>* head)
 }
 
 int
-main(int argc, char** argv)
+main(__attribute__((unused))int argc, __attribute__((unused))char** argv)
 {  
 	auto utl = make_unique<Node<int>>(10);
 	Node<int>* head = nullptr;  

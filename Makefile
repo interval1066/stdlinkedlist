@@ -7,16 +7,16 @@ rfilelist=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rfilelist,$d/,$2))
 TARGET				= linkedlist
 CC 					= g++
 # C++ compiler flags
-CFLAGS				+= -Wall -c -std=c++17 #-DBANNER - banner decding not ready yet
+CFLAGS				+= -Wall -c -std=c++17
 
-LIBS					+= #-pthread -lconfig
+LIBS
 EXT					= cc
 # source files
 SRC					= ./src
 SRCS     			:= $(call rfilelist,$(SRC),*.$(EXT))
-INCLUDES				= ./include
+INCLUDES			= ./include
 CFLAGS				+= $(addprefix -I,$(INCLUDES))
-OBJS 					= $(SRCS:%.$(EXT)=%.o)
+OBJS 				= $(SRCS:%.$(EXT)=%.o)
 DEBUG_HELPERS 		= $(SRCS:%.$(EXT)=%.debug)
 OPTIMIZE_HELPERS 	= $(SRCS:%.$(EXT)=%.optim)
 OBJDEBOUT			= $(@:%.debug=%.o)
@@ -54,9 +54,6 @@ optim: $(OPTIMIZE_HELPERS)
 	$(CC) $(OBJS) -o optim/$(TARGET) $(LIBS)
 	rm -f $(OPTIMIZE_HELPERS)
 	strip optim/$(TARGET)
-
-docs:
-	doxygen interp.dox
 
 # clean rule
 clean:

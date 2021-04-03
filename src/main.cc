@@ -6,6 +6,8 @@
 using namespace std;
 using namespace data;
 
+// These aren't part of the linkedlist class; separation of resposibilities principal.
+// Rendering the data should be the responsibilty of something else.
 void
 listall(Node<int>* head)  
 {  

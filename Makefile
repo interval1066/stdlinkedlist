@@ -9,7 +9,7 @@ CC 					= g++
 # C++ compiler flags
 CFLAGS				+= -Wall -c -std=c++17
 
-LIBS
+#LIBS
 EXT					= cc
 # source files
 SRC					= ./src

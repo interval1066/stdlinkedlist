@@ -6,69 +6,75 @@
 using namespace std;
 using namespace data;
 
-// These aren't part of the linkedlist class; separation of resposibilities principal.
-// Rendering the data should be the responsibilty of something else.
-void
-listall(Node<int>* head)  
-{  
-	auto current = head;
-
-	while(current != nullptr) {
-		cout << current->getKey();
-		current = current->getNext();
-		if(current != nullptr) cout << ", ";
-	}
-	cout << endl;
-}
-
-template <class T>
-void
-sortasc(Node<T>* head)
+// This isn't part of the linkedlist class; separation of resposibilities 
+// principal. Rendering the data should be the responsibilty of something 
+// else. Also; more composition.
+class NodeUtil
 {
-	Node<T>* temphead = head;
-	T tempkey;
-	auto counter = temphead->count(head);
+public:
+    void
+    listall(Node<int>* head)  
+    {  
+	    auto current = head;
 
-	for(unsigned n = 0; n < counter; n++) {
-		while(temphead->getNext()) {
-			if(temphead->getKey() > temphead->getNext()->getKey()) {		
-				tempkey = temphead->getKey();
+	    while(current != nullptr) {
+	    	cout << current->getKey();
+	    	current = current->getNext();
+	    	if(current != nullptr) cout << ", ";
+	    }
+	    cout << endl;
+    }
 
-				temphead->setKey(temphead->getNext()->getKey());
-				temphead->getNext()->setKey(tempkey);
-			}
-			temphead = temphead->getNext();
-		}
-		temphead = head;
-	}
-}
+    template <class T>
+    void
+    sortasc(Node<T>* head)
+    {
+	    Node<T>* temphead = head;
+	    T tempkey;
+	    auto counter = temphead->count(head);
 
-template <class T>
-void
-sortdsc(Node<T>* head)
-{
-	Node<T>* temphead = head;
-	T tempkey;
-	unsigned counter = temphead->count(head);
+	    for(unsigned n = 0; n < counter; n++) {
+	    	while(temphead->getNext()) {
+	    		if(temphead->getKey() > temphead->getNext()->getKey()) {		
+	    			tempkey = temphead->getKey();
 
-	for(unsigned n = 0; n < counter; n++) {
-		while(temphead->getNext()) {
-			if(temphead->getKey() < temphead->getNext()->getKey()) {		
-				tempkey = temphead->getKey();
+	    			temphead->setKey(temphead->getNext()->getKey());
+	    			temphead->getNext()->setKey(tempkey);
+	    		}
+	    		temphead = temphead->getNext();
+	    	}
+	    	temphead = head;
+	    }
+    }
 
-				temphead->setKey(temphead->getNext()->getKey());
-				temphead->getNext()->setKey(tempkey);
-			}
-			temphead = temphead->getNext();
-		}
-		temphead = head;
-	}
-}
+    template <class T>
+    void
+    sortdsc(Node<T>* head)
+    {
+    	Node<T>* temphead = head;
+    	T tempkey;
+    	unsigned counter = temphead->count(head);
+
+    	for(unsigned n = 0; n < counter; n++) {
+    		while(temphead->getNext()) {
+    			if(temphead->getKey() < temphead->getNext()->getKey()) {		
+    				tempkey = temphead->getKey();
+
+    				temphead->setKey(temphead->getNext()->getKey());
+    				temphead->getNext()->setKey(tempkey);
+    			}
+    			temphead = temphead->getNext();
+    		}
+    		temphead = head;
+    	}
+    }
+};
 
 int
 main(__attribute__((unused))int argc, __attribute__((unused))char** argv)
 {  
 	auto utl = make_unique<Node<int>>(10);
+    NodeUtil disp;
 	Node<int>* head = nullptr;  
 
 	utl->push(&head, 30);  
@@ -83,21 +89,21 @@ main(__attribute__((unused))int argc, __attribute__((unused))char** argv)
  	utl->search(head, 21)? cout << "Node found" << endl :
 		cout << "Node not found" << endl;
 
-	listall(head);
+	disp.listall(head);
 	cout << "number of elements: " << utl->count(head) << endl;
-	sortasc(head);
+	disp.sortasc(head);
 
 	cout << endl << "Sorted ascending:" << endl;
-	listall(head);
-	sortdsc(head);
+	disp.listall(head);
+	disp.sortdsc(head);
 
 	cout << endl << "Sorted descending:" << endl;
-	sortdsc(head);
-	listall(head);
+	disp.sortdsc(head);
+	disp.listall(head);
 
 	cout << endl << "Deleteing head node: " << head->getKey() << endl;
 	head = utl->deletefirst(head);
-	listall(head);
+	disp.listall(head);
 
 	cout << endl << "Searching for 14" << endl;
 	(utl->search(head, 14) != nullptr)? cout << "Found" << endl :
@@ -105,11 +111,11 @@ main(__attribute__((unused))int argc, __attribute__((unused))char** argv)
 
 	cout << endl << "Deleting tail" << endl;
 	utl->deletelast(head);
-	listall(head);
+	disp.listall(head);
 
 	cout << endl << "Deleting node valued 14" << endl;
 	utl->deletevalue(head, 14);
-	listall(head);
+	disp.listall(head);
 
 	return EXIT_SUCCESS;  
 }

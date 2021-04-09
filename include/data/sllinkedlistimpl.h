@@ -27,7 +27,7 @@ namespace data
 	}
 
 	template <class T>
-	unsigned
+	size_t
 	Node<T>::count(Node<T>* head)
 	{
 		Node<T>* current = head;

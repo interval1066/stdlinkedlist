@@ -29,7 +29,7 @@ namespace data
 		void push(Node<T>**, T);
 		Node* search(Node<T>*, T);
 
-		unsigned count(Node<T>*);
+		size_t count(Node<T>*);
 		Node* deletefirst(Node<T>*);
 		void deletelast(Node<T>*);
 

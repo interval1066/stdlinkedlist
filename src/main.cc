@@ -74,7 +74,7 @@ int
 main(__attribute__((unused))int argc, __attribute__((unused))char** argv)
 {  
 	auto utl = make_unique<Node<int>>(10);
-    NodeUtil disp;
+    	NodeUtil disp;
 	Node<int>* head = nullptr;  
 
 	utl->push(&head, 30);  

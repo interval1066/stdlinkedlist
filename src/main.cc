@@ -88,32 +88,31 @@ main(__attribute__((unused))int argc, __attribute__((unused))char** argv)
 
  	utl->search(head, 21)? cout << "Node found" << endl :
 		cout << "Node not found" << endl;
-
 	disp.listall(head);
+	
 	cout << "number of elements: " << utl->count(head) << endl;
 	disp.sortasc(head);
-
 	cout << endl << "Sorted ascending:" << endl;
+	
 	disp.listall(head);
 	disp.sortdsc(head);
-
 	cout << endl << "Sorted descending:" << endl;
-	disp.sortdsc(head);
+	
 	disp.listall(head);
-
 	cout << endl << "Deleteing head node: " << head->getKey() << endl;
 	head = utl->deletefirst(head);
+	
 	disp.listall(head);
-
 	cout << endl << "Searching for 14" << endl;
 	(utl->search(head, 14) != nullptr)? cout << "Found" << endl :
 		cout << "Not found" << endl;
-
+	
 	cout << endl << "Deleting tail" << endl;
 	utl->deletelast(head);
 	disp.listall(head);
-
+	
 	cout << endl << "Deleting node valued 14" << endl;
+	
 	utl->deletevalue(head, 14);
 	disp.listall(head);
 

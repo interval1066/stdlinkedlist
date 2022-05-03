@@ -112,7 +112,6 @@ main(__attribute__((unused))int argc, __attribute__((unused))char** argv)
 	disp.listall(head);
 	
 	cout << endl << "Deleting node valued 14" << endl;
-	
 	utl->deletevalue(head, 14);
 	disp.listall(head);
 

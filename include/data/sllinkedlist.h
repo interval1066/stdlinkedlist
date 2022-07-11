@@ -1,5 +1,4 @@
-#ifndef SLLINKEDLIST_H_
-#define SLLINKEDLIST_H_
+#pragma once
 
 namespace data
 {
@@ -37,4 +36,3 @@ namespace data
 	};
 }
 
-#endif

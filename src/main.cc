@@ -25,7 +25,7 @@ public:
 	    cout << endl;
     }
 
-    // Struggled with weather these should be part of the data class collection
+    // Struggled with whether these should be part of the data class collection
     // or some other name space. They aren't rendering classes, I would probably
     // create a new sub-namespace ("data/something") whose sole responsibility is
     // to manipulate/transform the data.

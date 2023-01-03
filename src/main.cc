@@ -39,9 +39,9 @@ public:
 
 	    for(unsigned n = 0; n < counter; n++) {
 	    	while(temphead->getNext()) {
-	    		if(temphead->getKey() > temphead->getNext()->getKey()) {		
+	    		if(temphead->getKey() > temphead->getNext()->getKey()) {
+				
 	    			tempkey = temphead->getKey();
-
 	    			temphead->setKey(temphead->getNext()->getKey());
 	    			temphead->getNext()->setKey(tempkey);
 	    		}
